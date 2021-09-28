@@ -1,0 +1,76 @@
+MC	A translation is applied to an object by<br>		Repositioning it along with straight line path	correct	Repositioning it along with circular path	incorrect	Both a and b	incorrect	None of the above	incorrect
+MC	We translate a two-dimensional point by adding<br>		Translation distances	correct	Translation difference	incorrect	Translation points	incorrect	None of the above	incorrect
+MC	The translation distances (dx, dy) is called as<br>		Translation vector	incorrect	Shift vector	incorrect	Both a and b	correct	Neither a nor b	incorrect
+MC	In 2D-translation, a point (x, y) can move to the new position (x', y') by using the equation<br>		x'=x+dx and y'=y+dx	incorrect	x'=x+dx and y'=y+dy	correct	X'=x+dy and Y'=y+dx	incorrect	X'=x-dx and y'=y-dy	incorrect
+MC	The two-dimensional translation equation in the matrix form is<br>		P'=P+T	correct	P'=P-T	incorrect	P'=P*T	incorrect	P'=p	incorrect
+MC	_________ is a rigid body transformation that moves objects without deformation.<br>		Rotation	incorrect	Scaling	incorrect	Translation	correct	All of the mentioned	incorrect
+MC	A straight line segment is translated by applying the transformation equation<br>		P'=P+T	correct	Dx and Dy	incorrect	P'=P+P	incorrect	both a and c	incorrect
+MC	Polygons are translated by adding __________ to the coordinate position of each vertex and the current attribute setting.<br>		Straight line path	incorrect	Translation vector	correct	Differences	incorrect	All of the above	incorrect
+MC	To change the position of a circle or ellipse we translate<br>		Center coordinates	incorrect	Center coordinates and redraw the figure in new location	correct	Outline coordinates	incorrect	All of the above	incorrect
+MC	The basic geometric transformations are<br>		Translation	incorrect	Rotation	incorrect	Scaling	incorrect	All of the above	correct
+MC	Which of the following is not a rigid body transformation?<br>		Translation	incorrect	Rotation	incorrect	Shearing	correct	Reflection	incorrect
+MC	Forming products of transformation matrices is often referred as<br>		Concatenation	incorrect	Composition	incorrect	both a & b	correct	None of above	incorrect
+MC	Two consecutive translation transformation t1 and t2 are<br>		Additive	correct	Multiplicative	incorrect	Subtractive	incorrect	none of above	incorrect
+MC	Two consecutive rotation transformation r1 and r2 are<br>		Additive	correct	Multiplicative	incorrect	Subtractive	incorrect	none of above	incorrect
+MC	Two consecutive scaling transformation s1 and s2 are<br>		Additive	incorrect	Multiplicative	correct	Subtractive	incorrect	none of above	incorrect
+MC	The process of mapping a world window in world coordinate system to viewport are called<br>		Transformation viewing	correct	Viewport	incorrect	Clipping window	incorrect	Screen coordinate system	incorrect
+MC	A two dimensional rotation is applied to an object by<br>		Repositioning it along with straight line path	incorrect	Repositioning it along with circular path	correct	Both a and b	incorrect	None of the above	incorrect
+MC	To generate a rotation , we must specify<br>		Rotation angle ϴ	correct	Distances dx and dy	incorrect	Rotation distance	incorrect	All of the mentioned	incorrect
+MC	Positive values for the rotation angle ϴ defines<br>		Counterclockwise rotations about the end points	incorrect	Counterclockwise translation about the pivot point	incorrect	Counterclockwise rotations about the pivot point	correct	Negative direction	incorrect
+MC	The rotation axis that is perpendicular to the xy plane and passes through the pivot point is known as<br>		Rotation	correct	Translation	incorrect	Scaling	incorrect	Shearing	incorrect
+MC	Which of the following is not a rigid body transformation?<br>		Translation	incorrect	Rotation	incorrect	Shearing	correct	Reflection	incorrect
+MC	Forming products of transformation matrices is often referred as<br>		Concatenation	incorrect	Composition	incorrect	both a & b	correct	None of above	incorrect
+MC	Two consecutive translation transformation t1 and t2 are<br>		Additive	correct	Multiplicative	incorrect	Subtractive	incorrect	none of above	incorrect
+MC	Two consecutive rotation transformation r1 and r2 are<br>		Additive	correct	Multiplicative	incorrect	Subtractive	incorrect	none of above	incorrect
+MC	Two consecutive scaling transformation s1 and s2 are<br>		Additive	incorrect	Multiplicative	correct	Subtractive	incorrect	none of above	incorrect
+MC	The process of mapping a world window in world coordinate system to viewport are called<br>		Transformation viewing	correct	Viewport	incorrect	Clipping window	incorrect	Screen coordinate system	incorrect
+MC	A translation is applied to an object by<br>		Repositioning it along with straight line path	correct	Repositioning it along with circular path	incorrect	Both a and b	incorrect	None of the above	incorrect
+MC	We translate a two-dimensional point by adding<br>		Translation distances	correct	Translation difference	incorrect	Translation points	incorrect	None of the above	incorrect
+MC	The translation distances (dx, dy) is called as<br>		Translation vector	incorrect	Shift vector	incorrect	Both a and b	correct	Neither a nor b	incorrect
+MC	In 2D-translation, a point (x, y) can move to the new position (x', y') by using the equation<br>		x'=x+dx and y'=y+dx	incorrect	x'=x+dx and y'=y+dy	correct	X'=x+dy and Y'=y+dx	incorrect	X'=x-dx and y'=y-dy	incorrect
+MC	The two-dimensional translation equation in the matrix form is<br>		P'=P+T	correct	P'=P-T	incorrect	P'=P*T	incorrect	P'=p	incorrect
+MC	_________ is a rigid body transformation that moves objects without deformation.<br>		Rotation	incorrect	Scaling	incorrect	Translation	correct	All of the mentioned	incorrect
+MC	A straight line segment is translated by applying the transformation equation<br>		P'=P+T	correct	Dx and Dy	incorrect	P'=P+P	incorrect	both a and c	incorrect
+MC	Polygons are translated by adding __________ to the coordinate position of each vertex and the current attribute setting.<br>		Straight line path	incorrect	Translation vector	correct	Differences	incorrect	All of the above	incorrect
+MC	To change the position of a circle or ellipse we translate<br>		Center coordinates	incorrect	Center coordinates and redraw the figure in new location	correct	Outline coordinates	incorrect	All of the above	incorrect
+MC	The basic geometric transformations are<br>		Translation	incorrect	Rotation	incorrect	Scaling	incorrect	All of the above	correct
+MC	A two dimensional rotation is applied to an object by<br>		Repositioning it along with straight line path	incorrect	Repositioning it along with circular path	correct	Both a and b	incorrect	None of the above	incorrect
+MC	To generate a rotation , we must specify<br>		Rotation angle ϴ	correct	Distances dx and dy	incorrect	Rotation distance	incorrect	All of the mentioned	incorrect
+MC	Positive values for the rotation angle ϴ defines<br>		Counterclockwise rotations about the end points	incorrect	Counterclockwise translation about the pivot point	incorrect	Counterclockwise rotations about the pivot point	correct	Negative direction	incorrect
+MC	The rotation axis that is perpendicular to the xy plane and passes through the pivot point is known as<br>		Rotation	correct	Translation	incorrect	Scaling	incorrect	Shearing	incorrect
+MC	The original coordinates of the point in polor coordinates are<br>		X'=r cos (Ф +ϴ) and Y'=r cos (Ф +ϴ)	incorrect	X'=r cos (Ф +ϴ) and Y'=r sin (Ф +ϴ)	correct	X'=r cos (Ф -ϴ) and Y'=r cos (Ф -ϴ)	incorrect	X'=r cos (Ф +ϴ) and Y'=r sin (Ф -ϴ)	incorrect
+MC	The two-dimensional rotation equation in the matrix form is<br>		P'=P+T	incorrect	P'=R*P	correct	P'=P*P	incorrect	P'=R+P	incorrect
+MC	An ellipse can also be rotated about its center coordinates by rotating<br>		End points	incorrect	Major and minor axes	correct	Both a and b	incorrect	None of the above	incorrect
+MC	The transformation that is used to alter the size of an object is<br>		Scaling	correct	Rotation	incorrect	Translation	incorrect	Reflection	incorrect
+MC	The two-dimensional scaling equation in the matrix form is<br>		P'=P+T	incorrect	P'=S*P	correct	P'=P*R	incorrect	P'=R+S	incorrect
+MC	We control the location of a scaled object by choosing the position is known as<br>		Pivot point	incorrect	Fixed point	correct	Differential scaling	incorrect	Uniform scaling 	incorrect
+MC	The process which divides each element of the picture into its visible and invisible portions, allowing the invisible portion to be discarded is called__?<br>		Windowing	incorrect	clipping	correct	both (a) and (b)	incorrect	Projecting	incorrect
+MC	The region against which an object is to be clipped is called________________<br>		image window	incorrect	Drawing window	incorrect	clip window or clipping window	correct	none of these	incorrect
+MC	The region code 0000 represents the____________________<br>		bottom clipping window	incorrect	right clipping window	incorrect	left clipping window	incorrect	viewing window	correct
+MC	A method used to test lines for total clipping is equivalent to the_____________________<br>		logical OR operator	incorrect	logical AND operator	correct	both (a) and (b)	incorrect	logical XOR operator	incorrect
+MC	A process of changing the position of an object in a straight line path from one coordinate location to another is called_____________________<br>		rotation	incorrect	translation	correct	motion	incorrect	none of these	incorrect
+MC	A two dimensional rotation is applied to an object by repositioning it along a?<br>		upward in the x-y plane	incorrect	diagonals path in the x-y plane	incorrect	circular path in the x-y plane	correct	straight path in the x-y plane	incorrect
+MC	A scaling transformation changes the __________ of an object?<br>		location	incorrect	size	correct	shape	incorrect	none of these	incorrect
+MC	Given matrix 1000000yxSSS represents the?<br>		Homogeneous Coordinates for both rotation and scaling	incorrect	Homogeneous Coordinates for translation	incorrect	Homogeneous Coordinates for rotation	incorrect	Homogeneous Coordinates for Scaling	correct
+MC	The transformation that produces a mirror image of an object relative to an axis is called__________<br>		reflection	correct	translation	incorrect	rotation	incorrect	none of these	incorrect
+MC	A transformation that slants the shape of objects is called the_____________<br>		reflection	incorrect	shear transformation	correct	translation	incorrect	none of these	incorrect
+MC	In Bresenham's algorithm, while generating a circle , it is easy to generate?<br>		One octant first and other by successive rotation	incorrect	One octant first and other by successive translation	incorrect	One octant first and other by successive reflection	correct	All octants	incorrect
+MC	Why a circle drawn on the screen appears to be elliptical  ?<br>		Screen has rectangular shape	incorrect	It is due to the aspect ratio of monitor	correct	CRT is completely spherical	incorrect	Our eyes are not at the same level on screen	incorrect
+MC	In bresenhan's algorithm error term is initialized to ?<br>		0	correct	1	incorrect	-1/2	incorrect	None of above	incorrect
+MC	Which of the following technique is used in Midpoint Subdivision algorithm ?<br>		Heap sort	incorrect	Bubble sort	incorrect	Binary search	correct	Linear search	incorrect
+MC	Which of the following clipping algorithm follows the Divide and Conquer strategy?<br>		Cohen- Sutherland algorithm	incorrect	Cyrus break algorithm	incorrect	4-bit algorithm	incorrect	Midpoint algorithm	correct
+MC	A line with endpoints codes as 0000 and 0100 is ?<br>		Completely visible	incorrect	Completely invisible	incorrect	Partially invisible	correct	Trivially invisible	incorrect
+MC	In the raster scan method for transformation, a 90º rotation can be performed by  ?<br>		by coping each row of the block into a column in the new frame buffer location	correct	reversing the order of bits within each row in the frame buffer	incorrect	by performing XOR on the frame buffer location	incorrect	None of above	incorrect
+MC	Obliquee projection with an angle of 450 to the horizontal plane is called as ?<br>		Cabinaet projection	incorrect	Cavalier projection	correct	Isometric projection	incorrect	None of these	incorrect
+MC	x = at² ; y = 2at is the parametric equation of ?<br>		Parabola	correct	Circle	incorrect	Rectangular hyperbola	incorrect	Ellipse	incorrect
+MC	Line produced by moving pen is __ at the end points than the line produced by the pixel replication?<br>		straight	incorrect	thin	incorrect	both (a) and (b)	incorrect	thicker	correct
+MC	Sometimes it may require undoing the applied transformation, In such a case which of the following transformation will be used____________<br>		shear transformation	incorrect	reflection	incorrect	inverse transformation	correct	translation	incorrect
+MC	Which of the following allow for 8 mirror images?<br>		Parabola	incorrect	Ellipse	incorrect	Hyperbola	incorrect	Circle	correct
+MC	The basic transformations include<br>		Translation	incorrect	Rotation	incorrect	Scaling	incorrect	All of the above	correct
+MC	The transformation in which an object is moved in a minimum distance path from one position to another is called<br>		Rotation	incorrect	Replacement	incorrect	Translation	correct	Scaling	incorrect
+MC	The transformation in which an object is moved from one position to another in circular path around a specified pivot point is called<br>		Rotation	correct	Shearing	incorrect	Translation	incorrect	Scaling	incorrect
+MC	The transformation in which the dimension of an object are changed relative to a specified fixed point is called<br>		Rotation	incorrect	Reflection	incorrect	Translation	incorrect	Scaling	correct
+MC	The transformation that produces a parallel mirror image of an object are called<br>		Rotation	incorrect	Reflection	correct	Translation	incorrect	Scaling	incorrect
+MC	If an object is rotated through an angle A in clockwise direction, the rotation matrix R= ...............<br>		cos A sin A-sin A cos A	correct	cos A -sin Asin A cos A	incorrect	sin A cos Acos A sin A	incorrect	None	incorrect
+MC	A composite transformation matrix can be made by determining the ________of matrix of the individual transformation<br>		Sum	incorrect	Product	correct	Difference	incorrect	None of the above	incorrect
+MC	Each successive transformation matrix _________ the product of the preceding transformation<br>		pre-multiplies	correct	post-multiplies	incorrect	adds	incorrect	subtracts	incorrect
