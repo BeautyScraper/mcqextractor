@@ -1,1 +1,1 @@
-python MCQextractorV3.py
+cmd /k python MCQextractorV3.py

@@ -5,7 +5,7 @@ import datetime
 
 class QuotesSpider(scrapy.Spider):
     name = "quotes"
-    resultFile = "Containers.txt"
+    resultFile = "mcqforDS.txt"
 
     def start_requests(self):
         urls = [
@@ -40,8 +40,10 @@ class QuotesSpider(scrapy.Spider):
                 yield scrapy.Request(url=url, callback=self.gkseries)
             if "mcqpoint.com" in url:
                 yield scrapy.Request(url=url, callback=self.mcqpoint)
-            if "r4r" in url:
-                yield scrapy.Request(url=url, callback=self.r4r)
+            if "interviewbit.com" in url:
+                yield scrapy.Request(url=url, callback=self.interviewbit)
+            if "byjus.com" in url:
+                yield scrapy.Request(url=url, callback=self.byjus)
 
     def careericons(self,response):
         '''https://mcqpoint.com/mcq/animation/'''
@@ -74,17 +76,6 @@ class QuotesSpider(scrapy.Spider):
             correct = alphabet.find(correctOption)
             # print(correct)
             self.writeQuestionN(question,options,correct)
-
-    def r4r(self, response):
-        # self.resultFile = response.url.split('/')[5] + '.txt'
-        question = response.xpath("//pre//text()").get().strip()
-        options = []
-        correct_g = response.xpath("//p[starts-with(@id,'ans')]/text()").get()
-        correct = int(re.search('(?<=:)\d+',correct_g)[0])
-        for i in range(1,5):
-            options.append(response.xpath("//p[starts-with(text(),%s)]//text()" % str(i)).get())
-            # print(correct)
-        self.writeQuestionN(question,options,correct)
             
     def mcqpoint(self,response):
         for question_div in response.css('div.question'):
@@ -93,6 +84,43 @@ class QuotesSpider(scrapy.Spider):
             opt = [x.strip() for x in optionall if re.search('\w+',x)]
             correct = opt.index(question_div.css('.answer::text').getall()[-1].strip()) + 1
             question = re.sub('^\d+\.', '', question).strip()
+            self.writeQuestionN(question,opt,correct)
+            # import pdb;pdb.set_trace()
+            # count = 1
+            # for i, opt in enumerate(options_elm):
+            #     if 
+            
+    def byjus(self,response):
+        breakpoint()
+        for question_div in response.css('div.question'):
+            question = question_div.css('h3::text').get()
+            optionall = question_div.css('ul.options>li:nth-child(1n+0)::text').getall()
+            opt = [x.strip() for x in optionall if re.search('\w+',x)]
+            correct = opt.index(question_div.css('.answer::text').getall()[-1].strip()) + 1
+            question = re.sub('^\d+\.', '', question).strip()
+            self.writeQuestionN(question,opt,correct)
+            # import pdb;pdb.set_trace()
+            # count = 1
+            # for i, opt in enumerate(options_elm):
+            #     if 
+            
+            
+    def interviewbit(self,response):
+        question_sections = response.css(".ibpage-mcq-problems__item")
+        # breakpoint()
+        alphabet = " abcdefghijklmnopqrstuvwxyz"
+        for question_div in question_sections:
+            question = question_div.css('div:nth-child(1) > div:nth-child(2) > p:nth-child(1)::text').get()
+            # optionall = question_div.css('ul.options>li:nth-child(1n+0)::text').getall()
+            opt = question_div.css('.ibpage-mcq-problems__checkbox-content>p::text').extract()
+            # correct = opt.index(question_div.css('.answer::text').getall()[-1].strip()) + 1
+            # breakpoint()
+            if len(question_div.css('.ibpage-mcq-problems__explanation>div>p::text').extract()) <=0:
+                continue
+            cor = question_div.css('.ibpage-mcq-problems__explanation>div>p::text').extract()[0]
+            
+            # question = re.sub('^\d+\.', '', question).strip()
+            correct = alphabet.find(cor[2].lower())
             self.writeQuestionN(question,opt,correct)
             # import pdb;pdb.set_trace()
             # count = 1
@@ -172,8 +200,6 @@ class QuotesSpider(scrapy.Spider):
 
     def writeQuestionN(self,question,option,correct = 1):
         optionInOne = ""
-        if "</code>" in question:
-            return 
         if option == []:
             return 
         for t,o in enumerate(option):
@@ -190,18 +216,15 @@ class QuotesSpider(scrapy.Spider):
         formedLine = formedLine.replace("‘","'").replace("’","'")
         formedLine = formedLine.replace("‘","'")
         ReplaceChareterList = [('→','->'),('←','<-'),('×','x'),('–','-'),('Ф','phi'),('—','-'),
-        ('´','\''),('…','...'),('−','-'),('Σ','Sigma'),('\xa0',' '),('′',"'"),('«','<<'),('»','>>'),('≤','<=')]
+        ('´','\''),('…','...'),('−','-'),('Σ','Sigma'),(r'\xa0',' '),('′',"'")]
         for x in ReplaceChareterList:
             formedLine = formedLine.replace(x[0],x[1])
         print(formedLine)
         if not formedLine.isascii():
-            lst_of_non_reco = [x for x in formedLine if not x.isascii()]
-            print(lst_of_non_reco)
-            a = input('enter i to ignore this line and other charectar to replace')
+            print([x for x in formedLine if not x.isascii()])
+            a = input('enter i to ignore this line')
             if a == 'i':
                 return
-            else:
-               formedLine = formedLine.replace(lst_of_non_reco[0], a)
             
         
         with open(self.resultFile, "a+", encoding='utf-8') as fp:
