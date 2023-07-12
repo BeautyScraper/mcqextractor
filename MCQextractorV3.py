@@ -1,13 +1,16 @@
+from pathlib import Path
 import scrapy
 from scrapy.crawler import CrawlerProcess
 import re
 import datetime
+import pandas as pd
 
 class QuotesSpider(scrapy.Spider):
     name = "quotes"
-    resultFile = "Containers.txt"
+    resultFile = "Containers.csv"
 
     def start_requests(self):
+        self.df = pd.DataFrame(columns = ['questionname', 'questiontext', 	'A', 'B', 'C', 'D', 'Answer 1', 	'Answer 2'])
         urls = [
 "https://iqsanswers.com/bioinformatics-multiple-choice-questions-and-answers/"
         ]
@@ -60,7 +63,8 @@ class QuotesSpider(scrapy.Spider):
             self.writeQuestionN(question,options,correct)
         
     def QuizExe(self, response):
-        self.resultFile = response.url.split('/')[5] + '.txt'
+        # self.resultFile = response.url.split('/')[5] + '.csv'
+        self.resultFile = 'Quiz.csv'
         alphabet = " abcdefghijklmnopqrstuvwxyz"
         questionSections = response.css(".quescontainer")
         for questionSection in questionSections:
@@ -68,12 +72,14 @@ class QuotesSpider(scrapy.Spider):
                 continue
             question = questionSection.css(".questionpre::text").extract()[0]
             # import pdb;pdb.set_trace()
-            question = question + "<br>" + questionSection.css(' *> pre').get(default="").replace("\n", "<br>")
+            question = question +  questionSection.css(' *> pre').get(default="").replace("\n", "<br>")
             options = questionSection.css(".questionpre::text").extract()[1:-1]
             correctOption = questionSection.css(".ans-Div span::text").extract()[1][2]
             correct = alphabet.find(correctOption)
             # print(correct)
-            self.writeQuestionN(question,options,correct)
+            # self.writeQuestionN(question,options,correct)
+            self.newLMS(question,options,correct)
+        self.df.to_csv(self.resultFile,index=False)
 
     def r4r(self, response):
         # self.resultFile = response.url.split('/')[5] + '.txt'
@@ -169,6 +175,49 @@ class QuotesSpider(scrapy.Spider):
 
             i += 2
             self.writeQuestion(question, options, correct)
+
+    def correctify(self, formedLine):
+        if "\n" in formedLine.rstrip('\n'):
+            return 
+        formedLine = formedLine.replace("….","...")
+        formedLine = formedLine.replace("”",'"').replace("“",'"')
+        formedLine = formedLine.replace("‘","'").replace("’","'")
+        formedLine = formedLine.replace("‘","'")
+        ReplaceChareterList = [('→','->'),('←','<-'),('×','x'),('–','-'),('Ф','phi'),('—','-'),
+        ('´','\''),('…','...'),('−','-'),('Σ','Sigma'),('\xa0',' '),('′',"'"),('«','<<'),('»','>>'),('≤','<=')]
+        for x in ReplaceChareterList:
+            formedLine = formedLine.replace(x[0],x[1])
+        print(formedLine)
+        if not formedLine.isascii():
+            lst_of_non_reco = [x for x in formedLine if not x.isascii()]
+            print(lst_of_non_reco)
+            a = input('enter i to ignore this line and other charectar to replace')
+            if a == 'i':
+                return
+            else:
+               formedLine = formedLine.replace(lst_of_non_reco[0], a)
+        return formedLine
+
+
+    def newLMS(self,question,option,correct = 1):
+        optionInOne = ""
+        if "</code>" in question:
+            return 
+        if option == []:
+            return 
+        alphabet = " abcdefghijklmnopqrstuvwxyz".upper()
+
+        # optionInOne = "\tincorrect\t".join(option) + "\tincorrect"
+        # optionInOne = self.nth_repl(optionInOne,"\tincorrect\t","\tcorrect\t",correct)
+        # optionInOne = optionInOne.replace("’","'")
+        # sep = ';'
+        # formedLine = sep.join([question,question,*option, alphabet[correct]])+'\n'
+        # formedLine = "\t%s\t%s\n" % (question,question,*option)
+        new_row = [question,question,*option, alphabet[correct],""]
+        new_row = list(map(self.correctify, new_row))
+        if None in new_row or len(new_row) != 8:
+            return
+        self.df.loc[len(self.df)] = new_row
 
     def writeQuestionN(self,question,option,correct = 1):
         optionInOne = ""
