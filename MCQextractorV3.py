@@ -4,10 +4,11 @@ from scrapy.crawler import CrawlerProcess
 import re
 import datetime
 import pandas as pd
+from unidecode import unidecode
 
 class QuotesSpider(scrapy.Spider):
     name = "quotes"
-    resultFile = "Containers.csv"
+    resultFile = "Quiz_1.csv"
 
     def start_requests(self):
         self.df = pd.DataFrame(columns = ['questionname', 'questiontext', 	'A', 'B', 'C', 'D', 'Answer 1', 	'Answer 2'])
@@ -28,7 +29,7 @@ class QuotesSpider(scrapy.Spider):
                 continue
             
             if "compscibits" in url or "compsciedu.com" in url:
-                yield scrapy.Request(url=url, callback=self.QuizExe)
+                yield scrapy.Request(url=url, callback=self.compsciedu)
 
             if "examveda" in url:
                 yield scrapy.Request(url=url, callback=self.examveda)
@@ -61,10 +62,40 @@ class QuotesSpider(scrapy.Spider):
             correctOption =  re.search('\((\w)\)', questionSection.css('.ft_sz_20>p').extract()[0])[1]
             correct = alphabet.find(correctOption)
             self.writeQuestionN(question,options,correct)
-        
+
+    def compsciedu(self,response):
+        self.resultFile = response.url.split('/')[4]+'.csv'
+        alphabet = " abcdefghijklmnopqrstuvwxyz"
+        questionSections = response.css('.text-container.shadow-lg')
+        for questionSection in questionSections:
+            if len(questionSection.css("img::attr(src)").extract()) >= 1:
+                continue
+            question = ''.join(questionSection.css('.ques-container span::text').getall()[1:])
+            options = questionSection.css('.option-container p.my-auto span::text').getall()
+
+            # breakpoint()
+
+            Option_st = questionSection.css('.option-container p.my-auto::attr(id)').getall()
+            correctOption = [i for i,x in enumerate(Option_st) if 'rightoption' in x][0]+1
+            # try:
+            #     correct = alphabet.find(correctOption)
+            # except:
+            #     breakpoint()
+            # print(correct)
+            # self.writeQuestionN(question,options,correct)
+            self.newLMS(question,options,correctOption)
+        self.df.to_csv(self.resultFile,index=False)
+
+
+
+
+
+
+
     def QuizExe(self, response):
         # self.resultFile = response.url.split('/')[5] + '.csv'
-        self.resultFile = 'Quiz.csv'
+        breakpoint()
+        self.resultFile = 'Quiz2.csv'
         alphabet = " abcdefghijklmnopqrstuvwxyz"
         questionSections = response.css(".quescontainer")
         for questionSection in questionSections:
@@ -177,14 +208,17 @@ class QuotesSpider(scrapy.Spider):
             self.writeQuestion(question, options, correct)
 
     def correctify(self, formedLine):
-        if "\n" in formedLine.rstrip('\n'):
-            return 
+        
+        # if 'All badminton player ' in formedLine:
+        #     breakpoint()
+        formedLine = formedLine.replace("\n","<br>")
+        formedLine = formedLine.replace("\r","<br>")
         formedLine = formedLine.replace("….","...")
         formedLine = formedLine.replace("”",'"').replace("“",'"')
         formedLine = formedLine.replace("‘","'").replace("’","'")
         formedLine = formedLine.replace("‘","'")
-        ReplaceChareterList = [('→','->'),('←','<-'),('×','x'),('–','-'),('Ф','phi'),('—','-'),
-        ('´','\''),('…','...'),('−','-'),('Σ','Sigma'),('\xa0',' '),('′',"'"),('«','<<'),('»','>>'),('≤','<=')]
+        ReplaceChareterList = [('→','->'),('←','<-'),('×','x'),('–','-'),('Ф','phi'),('—','-'),('⁄','/'),
+        ('´','\''),('…','...'),('−','-'),('Σ','Sigma'),('Φ','phi'),('\xa0',' '),('′',"'"),('«','<<'),('»','>>'),('≤','<='), ('∩', 'Intersection')]
         for x in ReplaceChareterList:
             formedLine = formedLine.replace(x[0],x[1])
         print(formedLine)
